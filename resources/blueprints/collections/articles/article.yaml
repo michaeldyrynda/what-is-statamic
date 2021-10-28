@@ -7,7 +7,10 @@ sections:
         handle: title
         field:
           type: text
+          required: true
           display: Title
+          validate:
+            - required
       -
         handle: content
         field:
@@ -30,3 +33,78 @@ sections:
           type: users
           display: Author
           default: current
+      -
+        handle: bard
+        field:
+          always_show_set_button: false
+          sets:
+            new_set:
+              display: 'New Set'
+              fields:
+                -
+                  handle: centre_image
+                  field:
+                    mode: list
+                    container: assets
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    max_files: 1
+                    display: 'Centre image'
+                    type: assets
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
+          buttons:
+            - h2
+            - h3
+            - bold
+            - italic
+            - unorderedlist
+            - orderedlist
+            - removeformat
+            - quote
+            - anchor
+            - image
+            - table
+          save_html: false
+          toolbar_mode: fixed
+          link_noopener: false
+          link_noreferrer: false
+          target_blank: false
+          reading_time: false
+          fullscreen: true
+          allow_source: true
+          enable_input_rules: true
+          enable_paste_rules: true
+          display: Bard
+          type: bard
+          icon: bard
+          listable: hidden
+          instructions_position: above
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - required
+      -
+        handle: date
+        field:
+          type: date
+          required: true
+          validate:
+            - required
+      -
+        handle: topics
+        field:
+          type: terms
+          taxonomies:
+            - topics
+          display: Topics
+          mode: select
